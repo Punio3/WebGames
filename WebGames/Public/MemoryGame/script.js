@@ -28,7 +28,7 @@ function createCards() {
         const color = colors[i % colors.length];
         const card = new Card(color, index);
         card.element.addEventListener('click', () => handleCardClick(card));
-        // Ustawienie procentowych wymiarów karty
+
         card.element.style.width = '100%';
         card.element.style.height = '100%';
 
@@ -64,7 +64,7 @@ function resetGame() {
 
     cards.forEach(card => card.hideCard());
 
-    createCards(); // Tworzy now¹ planszê
+    createCards(); 
 }
 
 function updateBoardSize() {
@@ -72,9 +72,7 @@ function updateBoardSize() {
     col = parseInt(document.getElementById('cols').value, 10);
 }
 
-// Dodajemy nas³uchiwacze
 restartButton.addEventListener('click', resetGame);
 setSizeButton.addEventListener('click', updateBoardSize);
 
-// Inicjalizacja gry
 createCards();

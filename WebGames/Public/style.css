@@ -8,108 +8,21 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     width: 100vw;
     height: 100vh;
-    background-color:azure;
+    background-color: azure;
 }
 
-.header1 {
-    display: flex;
-    justify-content: center;
-}
-
-.game-container {
-    display: flex;
-    flex-direction: row; 
-    width: 70%;
-    height: 75%;
-    background-color: antiquewhite;
-    align-items: center; 
-    justify-content: left;
+.top_section {
+    width: 80%;
+    background-color: orange;
+    height: 10%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    align-content: center;
+    padding-left: 3%;
     border-radius: 15px;
-    border: 4px solid;
-}
-
-.sidebar {
-    display: flex;
-    width: 20%;
-    height: 60%;
-    background-color: firebrick;
-    flex-direction: column;
-    align-items: center;
-    margin: 0px 3% 0 2%;
-    border-radius:15px;
-    border: 4px solid;
-}
-
-
-.sidebar button {
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: black;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    border: 3px solid;
-}
-
-.sidebar button:hover{
-    background-color:aquamarine;
-}
-
-.sidebar input {
-    width: 50%;
-    padding: 5px;
-    font-size: 16px;
-    text-align: center;
-    margin-bottom: 10px;
-    border: 3px solid;
-    border-radius: 15px;
-}
-
-.sidebar_h2{
-    margin-top:12%;
-    margin-bottom:10%;
-
-}
-
-.sidebar_text{
-    font-size:20px;
-}
-
-.game-board {
-    display: grid;
-    width:90%;
-    height:90%;
-    grid-template-columns: repeat(7, 100px);
-    grid-template-rows: repeat(4, 100px);
-    justify-content: center;
-    border: 5px solid;
-    margin-right:3%;
-}
-
-.card {
-    width: 100px;
-    height: 100px;
-    background-color: #ddd;
-    border: 3px solid #ddd;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.top_section{
-    width:80%;
-    background-color:orange;
-    height:10%;
-    margin-top:3%;
-    margin-bottom:3%;
-    align-content:center;
-    padding-left:3%;
-    border-radius:15px;
-    border:3px,solid;
+    border: 3px,solid;
 }
 
 .top_section_button {
@@ -121,4 +34,8 @@ body {
     border-radius: 8px;
     margin-right: 3%;
     border: 3px solid;
+}
+
+.top_section_button:hover {
+    background-color: lightpink;
 }

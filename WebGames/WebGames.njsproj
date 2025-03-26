@@ -28,16 +28,34 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="Public\Card.js">
-      <SubType>Code</SubType>
-    </Content>
     <Content Include="Public\index.html">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Public\script.js">
+    <Content Include="Public\MemoryGame\Card.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Public\MemoryGame\index.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Public\MemoryGame\script.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Public\MemoryGame\style.css">
       <SubType>Code</SubType>
     </Content>
     <Content Include="Public\style.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Public\TicTacToe\Field.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Public\TicTacToe\index.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Public\TicTacToe\script.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Public\TicTacToe\style.css">
       <SubType>Code</SubType>
     </Content>
     <Content Include="server.js" />
@@ -46,6 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Public\" />
+    <Folder Include="Public\MemoryGame\" />
+    <Folder Include="Public\TicTacToe\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>
