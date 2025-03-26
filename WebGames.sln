@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "WebGames", "WebGames\WebGames.njsproj", "{451B485F-FCE8-4B2A-BE1E-D70544A40986}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{451B485F-FCE8-4B2A-BE1E-D70544A40986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{451B485F-FCE8-4B2A-BE1E-D70544A40986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{451B485F-FCE8-4B2A-BE1E-D70544A40986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{451B485F-FCE8-4B2A-BE1E-D70544A40986}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CC1A628C-3342-4426-BE55-525A0A0957AC}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,14 @@
+{
+  "name": "web-games",
+  "version": "0.0.0",
+  "description": "WebGames",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  },
+  "devDependencies": {
+    "eslint": "^8.21.0"
+  },
+  "eslintConfig": {
+  }
+}
