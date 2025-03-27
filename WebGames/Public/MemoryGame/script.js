@@ -1,44 +1,74 @@
 import Card from './Card.js';
 
 let colors = [
-    '#FF5733', '#33FF57', '#3357FF', '#F0F033', '#FF33F0', '#33FFF0', '#F033FF',
-    '#FF00FF', '#00FFFF', '#FFFF00', '#800080', '#008000', '#FF1493', '#FFD700'
+    '#FF0000',  // Czerwony
+    '#00FF00',  // Zielony
+    '#0000FF',  // Niebieski
+    '#FFFF00',  // ¯ó³ty
+    '#FF00FF',  // Ró¿owy
+    '#00FFFF',  // Cyjan
+    '#FFA500',  // Pomarañczowy
+    '#800080',  // Fioletowy
+    '#008000',  // Zielony (ciemny)
+    '#FFC0CB',  // Jasny ró¿owy
+    '#FFD700',  // Z³oty
+    '#A52A2A',  // Br¹zowy
+    '#000000',  // Czarny
+    '#FFFFFF'   // Bia³y
 ];
 
 const gameBoard = document.getElementById('game-board');
 const restartButton = document.getElementById('restart-button');
 const setSizeButton = document.getElementById('set-size-button');
+const TimerLabel = document.getElementById('Timer');
+const TriesAmonutLabel = document.getElementById('TriesAmount');
+const CorrectParsLabel = document.getElementById('CorrectPars');
 
 let flippedCards = [];
 let cards = [];
 let row, col;
-row = 4;
-col = 7;
-
+let AmountOfCorrectPars = 0;
+let timer;
+let secondsElapsed = 0;
+let TriesAmount = 0;
+let isGameEnded = false;
 function createCards() {
+    cards = [];
     let index = 0;
-    const totalCards = row*col;
 
+    for (let i = 0; i < (row * col) / 2; i++) {
+        let color = colors[i % colors.length]; 
+        cards.push(new Card(color, index));
+        cards.push(new Card(color, index + 1));
+        index += 2;
+    }
+
+    shuffleArray(cards); 
+}
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; 
+    }
+}
+
+function AddCardsToBoard() {
     gameBoard.innerHTML = '';
 
     gameBoard.style.gridTemplateColumns = `repeat(${col}, ${100 / col}%)`;
     gameBoard.style.gridTemplateRows = `repeat(${row}, ${100 / row}%)`;
 
-    for (let i = 0; i < totalCards; i++) {
-        const color = colors[i % colors.length];
-        const card = new Card(color, index);
+    cards.forEach(card => {
         card.element.addEventListener('click', () => handleCardClick(card));
-
         card.element.style.width = '100%';
         card.element.style.height = '100%';
-
         gameBoard.appendChild(card.element);
-        cards.push(card);
-        index++;
-    }
+    });
 }
 
 function handleCardClick(card) {
+    if (card.flipped) return;
     if (flippedCards.length === 2) return;
 
     card.flipCard();
@@ -49,6 +79,11 @@ function handleCardClick(card) {
 
         if (card1.color === card2.color) {
             flippedCards = [];
+            AmountOfCorrectPars++;
+            CorrectParsLabel.textContent = `${AmountOfCorrectPars}/${cards.length / 2}`;
+            if (AmountOfCorrectPars == cards.length / 2) {
+                isGameEnded = true;
+            }
         } else {
             setTimeout(() => {
                 card1.hideCard();
@@ -56,15 +91,29 @@ function handleCardClick(card) {
                 flippedCards = [];
             }, 1000);
         }
+        TriesAmount++;
+        TriesAmonutLabel.textContent = `${TriesAmount}`;
     }
 }
 
 function resetGame() {
     flippedCards = [];
+    AmountOfCorrectPars = 0;
+    secondsElapsed = 0;
+    TriesAmount = 0;
+    isGameEnded = false;
 
-    cards.forEach(card => card.hideCard());
+    createCards();
+    AddCardsToBoard();
 
-    createCards(); 
+    CorrectParsLabel.textContent = `0/${cards.length / 2}`;
+    TimerLabel.textContent = '00:00';
+    TriesAmonutLabel.textContent = `0`;
+
+    clearInterval(timer);
+    timer = setInterval(updateTimer, 1000);
+
+
 }
 
 function updateBoardSize() {
@@ -72,7 +121,20 @@ function updateBoardSize() {
     col = parseInt(document.getElementById('cols').value, 10);
 }
 
+function updateTimer() {
+    if (isGameEnded) {
+        clearInterval(timer); 
+        return; 
+    }
+
+    secondsElapsed++;
+    const minutes = Math.floor(secondsElapsed / 60);
+    const seconds = secondsElapsed % 60;
+    TimerLabel.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+
 restartButton.addEventListener('click', resetGame);
 setSizeButton.addEventListener('click', updateBoardSize);
 
-createCards();
+updateBoardSize();
+resetGame();

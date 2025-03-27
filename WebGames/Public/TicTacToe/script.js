@@ -8,13 +8,15 @@ const setSizeButton = document.getElementById('set-size-button');
 let Board = [];
 var Size = 3;
 var WhoMoves = 0;
-
+var isGameEnded = false;
 
 function resetGame() {
     createBoard();
 }
 
 function createBoard() {
+    WhoMoves = 0;
+    isGameEnded = false;
     Board = []; 
 
     for (let i = 0; i < Size; i++) {
@@ -42,15 +44,17 @@ function createBoard() {
 }
 
 function handleCardClick(field) {
-    if (field.Symbol === "") {
-        if (WhoMoves === 0) {
-            field.SetValue('O');
-            StartCheckingWin('O');
-            WhoMoves = 1;
-        } else {
-            field.SetValue('X');
-            StartCheckingWin('X');
-            WhoMoves = 0;
+    if (!isGameEnded) {
+        if (field.Symbol === "") {
+            if (WhoMoves === 0) {
+                field.SetValue('O');
+                StartCheckingWin('O');
+                WhoMoves = 1;
+            } else {
+                field.SetValue('X');
+                StartCheckingWin('X');
+                WhoMoves = 0;
+            }
         }
     }
 }
@@ -72,14 +76,15 @@ function StartCheckingWin(Symbol) {
 }
 function CheckWin(field, variant, counter) {
     if (counter === Size) {
-        field.element.style.backgroundColor = "#00FFFF";
+        field.element.style.backgroundColor = "#FF4500";
+        isGameEnded = true;
         return true;
     }
     if (variant === 0) {
         if (field.row + 1 < Size) {
             if (field.CheckNieghbour(Board[field.row + 1][field.col])) {
                 if (CheckWin(Board[field.row + 1][field.col], 0, counter+1)) {
-                    field.element.style.backgroundColor = "#00FFFF";
+                    field.element.style.backgroundColor = "#FF4500";
                     return true;
                 }
             }
@@ -88,7 +93,7 @@ function CheckWin(field, variant, counter) {
         if (field.col + 1 < Size) {
             if (field.CheckNieghbour(Board[field.row][field.col + 1])) {
                 if (CheckWin(Board[field.row][field.col + 1], 1, counter+1)) {
-                    field.element.style.backgroundColor = "#00FFFF";
+                    field.element.style.backgroundColor = "#FF4500";
                     return true;
                 }
             }
@@ -97,7 +102,7 @@ function CheckWin(field, variant, counter) {
         if (field.col + 1 < Size && field.row+1<Size) {
             if (field.CheckNieghbour(Board[field.row + 1][field.col + 1])) {
                 if (CheckWin(Board[field.row + 1][field.col + 1], 2, counter+1)) {
-                    field.element.style.backgroundColor = "#00FFFF";
+                    field.element.style.backgroundColor = "#FF4500";
                     return true;
                 }
             }
@@ -106,7 +111,7 @@ function CheckWin(field, variant, counter) {
         if (field.col + 1 < Size && field.row - 1 >=0) {
             if (field.CheckNieghbour(Board[field.row - 1][field.col + 1])) {
                 if (CheckWin(Board[field.row - 1][field.col + 1], 3, counter+1)) {
-                    field.element.style.backgroundColor = "#00FFFF";
+                    field.element.style.backgroundColor = "#FF4500";
                     return true;
                 }
             }

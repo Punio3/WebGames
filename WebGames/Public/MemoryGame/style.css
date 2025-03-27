@@ -11,7 +11,7 @@ body {
 
     width: 100vw;
     height: 100vh;
-    background-color:azure;
+    background-color:lightgray;
 }
 
 .header1 {
@@ -21,28 +21,41 @@ body {
 
 .game-container {
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
     width: 70%;
     height: 75%;
-    background-color: antiquewhite;
-    align-items: center; 
+    background-color: rosybrown;
+    align-items: center;
     justify-content: left;
     border-radius: 15px;
-    border: 4px solid;
+    border: 3px solid;
 }
 
 .sidebar {
     display: flex;
     width: 20%;
     height: 60%;
-    background-color: firebrick;
     flex-direction: column;
     align-items: center;
     margin: 0px 3% 0 2%;
-    border-radius:15px;
-    border: 4px solid;
+
 }
 
+.sidebar_createGame, .sidebar_GameInfromations {
+    width: 100%;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+    border: 3px solid black;
+    text-align: center;
+}
+.sidebar_createGame {
+    margin-bottom: 20px;
+}
+
+.sidebar_text, .sidebar_timer, .sidebar_CorrectPars .sidebar_TriesAmount {
+    font-size: 18px;
+}
 
 .sidebar button {
     padding: 10px;
@@ -87,7 +100,7 @@ body {
     grid-template-columns: repeat(7, 100px);
     grid-template-rows: repeat(4, 100px);
     justify-content: center;
-    border: 5px solid;
+    border: 3px solid;
     margin-right:3%;
 }
 
@@ -100,23 +113,23 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.top_section{
-    width:80%;
-    background-color:orange;
-    height:10%;
-    margin-top:3%;
-    margin-bottom:3%;
-    align-content:center;
-    padding-left:3%;
-    border-radius:15px;
-    border:3px,solid;
+.top_section {
+    width: 80%;
+    background-color: snow;
+    height: 10%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    align-content: center;
+    padding-left: 3%;
+    border-radius: 15px;
+    border: 3px,solid;
 }
 
 .top_section_button {
     padding: 8px;
     font-size: 16px;
     cursor: pointer;
-    background-color: lavender;
+    background-color: moccasin;
     color: black;
     border-radius: 8px;
     margin-right: 3%;

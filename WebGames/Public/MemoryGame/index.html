@@ -16,16 +16,32 @@
 
     <div class="game-container">
         <div class="sidebar">
-            <h2 class="sidebar_h2">Board Size</h2>
-            <label class="sidebar_text" for="rows">Rows:</label>
-            <input type="number" id="rows" min="2" max="10" value="4">
+            <div class="sidebar_createGame">
+                <h2 class="sidebar_h2">Board Size</h2>
+                <label class="sidebar_text" for="rows">Rows:</label>
+                <input type="number" id="rows" min="2" max="10" value="4">
 
-            <label class="sidebar_text" for="cols">Cols:</label>
-            <input type="number" id="cols" min="2" max="10" value="4">
+                <label class="sidebar_text" for="cols">Cols:</label>
+                <input type="number" id="cols" min="2" max="10" value="4">
 
-            <button id="set-size-button">Set Size</button>
+                <button id="set-size-button">Set Size</button>
 
-            <button id="restart-button">Start Again</button>
+                <button id="restart-button">Start Again</button>
+            </div>
+            <div class="sidebar_GameInfromations">
+                <div class="sidebar_2">
+                    <label class="sidebar_text">Timer</label>
+                    <label class="sidebar_timer" id="Timer">0:00</label>
+                </div>
+                <div class="sidebar_2">
+                    <label class="sidebar_text">Tries amount</label>
+                    <label class="sidebar_TriesAmount" id="TriesAmount">0</label>
+                </div>
+                <div class="sidebar_2">
+                    <label class="sidebar_text">Correct Pars</label>
+                    <label class="sidebar_CorrectPars" id="CorrectPars">0/7</label>
+                </div>
+            </div>
         </div>
 
         <div id="game-board" class="game-board"></div>
