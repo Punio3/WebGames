@@ -15,18 +15,19 @@
         <button class="top_section_button" onclick="location.href='../Hangman/index.html'" id="Hangman-button">Hangman</button>
     </div>
 
-    <div class="game-container">
-        <div class="sidebar">
-            <h2 class="sidebar_h2">Board Size</h2>
-            <input type="number" id="rows" min="3" max="6" value="3">
+    <div class="Main_Section">
+        <div class="Word_Section" id="Word_Section">
 
-            <button id="set-size-button">Set Size</button>
-
-            <button id="restart-button">Start Again</button>
         </div>
+        <div class="Input_Section">
+            <div class="Typing_Section">
+                <label class="Text_Typing">Podaj znak</label>
+                <input class="Text_Input" id="Text_Input" />
+            </div>
+            <div class="Letters_Section" id="Letters_Section">
 
-        <div id="game-board" class="game-board"></div>
-
+            </div>
+        </div>
     </div>
 
     <script type="module" src="script.js"></script>

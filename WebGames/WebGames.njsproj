@@ -28,6 +28,18 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Public\Hangman\Field.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Public\Hangman\index.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Public\Hangman\script.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Public\Hangman\style.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Public\index.html">
       <SubType>Code</SubType>
     </Content>
@@ -65,6 +77,7 @@
   <ItemGroup>
     <Folder Include="Public\" />
     <Folder Include="Public\MemoryGame\" />
+    <Folder Include="Public\Hangman\" />
     <Folder Include="Public\TicTacToe\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
