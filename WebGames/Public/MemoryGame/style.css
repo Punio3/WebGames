@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -5,56 +6,91 @@
 }
 
 body {
+    font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    width: 100vw;
+    justify-content: flex-start;
     height: 100vh;
-    background-color:lightgray;
+    background-color: #f4f4f4; 
+}
+
+.top_section {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 10px;
+    background-color: #333;
+    padding-left: 4%;
+}
+
+.top_section_button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #555; 
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.top_section_button:hover {
+    background-color: #777; 
 }
 
 .header1 {
     display: flex;
     justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
 }
 
 .game-container {
     display: flex;
     flex-direction: row;
-    width: 70%;
+    width: 75%;
     height: 75%;
-    background-color: rosybrown;
+    background-color: #f9f9f9; 
     align-items: center;
-    justify-content: left;
+    justify-content: space-between;
     border-radius: 15px;
-    border: 3px solid;
+    border: 3px solid #ddd; 
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); 
+    padding: 20px;
+    margin-top:5%;
 }
 
 .sidebar {
     display: flex;
     width: 20%;
-    height: 60%;
+    height: 100%;
     flex-direction: column;
     align-items: center;
-    margin: 0px 3% 0 2%;
-
+    margin: 7% 3% 0 2%;
 }
 
 .sidebar_createGame, .sidebar_GameInfromations {
     width: 100%;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.9); 
     border-radius: 16px;
-    border: 3px solid black;
+    border: 3px solid #ccc;
     text-align: center;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
+
 .sidebar_createGame {
     margin-bottom: 20px;
 }
 
 .sidebar_text, .sidebar_timer, .sidebar_CorrectPars .sidebar_TriesAmount {
     font-size: 18px;
+    color: #333;
 }
 
 .sidebar button {
@@ -62,46 +98,52 @@ body {
     font-size: 16px;
     cursor: pointer;
     background-color: #007bff;
-    color: black;
+    color: white;
     border: none;
     border-radius: 5px;
     margin-bottom: 10px;
-    border: 3px solid;
+    border: 3px solid #007bff;
+    transition: background-color 0.3s ease;
 }
 
-.sidebar button:hover{
-    background-color:aquamarine;
+.sidebar button:hover {
+    background-color: aquamarine;
 }
 
 .sidebar input {
-    width: 50%;
-    padding: 5px;
+    width: 40%;
+    padding: 8px;
     font-size: 16px;
     text-align: center;
     margin-bottom: 10px;
-    border: 3px solid;
+    border: 3px solid #ccc;
     border-radius: 15px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
-.sidebar_h2{
-    margin-top:12%;
-    margin-bottom:10%;
-
+.sidebar_h2 {
+    margin-top: 12%;
+    margin-bottom: 10%;
+    font-size: 22px;
 }
 
-.sidebar_text{
-    font-size:20px;
+.sidebar_text {
+    font-size: 20px;
+    color: #333;
 }
 
 .game-board {
     display: grid;
-    width:90%;
-    height:90%;
+    width: 90%;
+    height: 90%;
     grid-template-columns: repeat(7, 100px);
     grid-template-rows: repeat(4, 100px);
     justify-content: center;
-    border: 3px solid;
-    margin-right:3%;
+    border: 3px solid #ddd;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .card {
@@ -111,31 +153,24 @@ body {
     border: 3px solid #ddd;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.top_section {
-    width: 80%;
-    background-color: snow;
-    height: 10%;
-    margin-top: 2%;
-    margin-bottom: 3%;
-    align-content: center;
-    padding-left: 3%;
-    border-radius: 15px;
-    border: 3px,solid;
+.card:hover {
+    background-color: #f4f4f4; 
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); 
 }
 
-.top_section_button {
-    padding: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: moccasin;
-    color: black;
-    border-radius: 8px;
-    margin-right: 3%;
-    border: 3px solid;
-}
 
-.top_section_button:hover {
-    background-color: lightpink;
+.sidebar_input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 18px;
+    text-align: center;
 }

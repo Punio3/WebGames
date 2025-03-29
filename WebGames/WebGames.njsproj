@@ -34,6 +34,9 @@
     <Content Include="Public\Hangman\index.html">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Public\Hangman\Miss_Circles.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Public\Hangman\script.js">
       <SubType>Code</SubType>
     </Content>

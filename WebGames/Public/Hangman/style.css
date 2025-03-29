@@ -1,143 +1,171 @@
-* {
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
+    font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
+    justify-content: flex-start;
     height: 100vh;
-    background-color: lightgray;
+    background-color: #f4f4f4;
 }
 
 .top_section {
-    width: 80%;
-    background-color: snow;
-    height: 10%;
-    margin-top: 2%;
-    margin-bottom: 3%;
-    align-content: center;
-    padding-left: 3%;
-    border-radius: 15px;
-    border: 3px,solid;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 10px;
+    background-color: #333;
+    padding-left: 10%;
 }
 
 .top_section_button {
-    padding: 8px;
-    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #555;
+    color: white;
     cursor: pointer;
-    background-color: moccasin;
-    color: black;
-    border-radius: 8px;
-    margin-right: 3%;
-    border: 3px solid;
+    border-radius: 5px;
 }
 
 .top_section_button:hover {
-    background-color: lightpink;
+    background-color: #777;
+}
+
+.Main {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 20px;
+    height: 80%;
+}
+
+.Miss_Type_Section {
+    display: flex;
+    width: 100%;
+    height: 30%;
+    margin-bottom: 70%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap:10px;
+    justify-content:center;
+}
+
+.Miss_Circles {
+    width: 50px;
+    height: 50px;
+    background-color: snow;
+    border: 3px solid red; 
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.Side_Section {
+    display: flex;
+    width: 20%;
+    height: 65%;
+    flex-direction: column;
+    background-color: #ddd;
+    padding: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin-top: 5%;
 }
 
 .Main_Section {
+    width: 70%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 85%;
-    height: 75%;
-    background-color: mistyrose;
-    border-radius: 15px;
-    border: 3px solid;
+    align-items:center;
+    background-color: white;
+    padding: 20px;
+    margin-left: 5%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
 }
 
 .Word_Section {
+    width: 80%;
+    height:35%;
     display: grid;
-    justify-content: center;
-    align-items: center;
-    width: 75%;
-    height: 45%;
-    grid-template-columns: repeat(7, 100px);
-    grid-template-rows: repeat(4, 100px);
-    background-color: mistyrose;
-    border-radius: 15px;
-    border: 3px solid;
-    margin-top: 2%;
-    padding:2%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2px;
+    text-align: center;
+    margin-top:7%;
+    margin-right:10%;
 }
 
-.Input_Section {
-    display:flex;
-    flex-direction: row;
-    align-items:center;
-    width: 90%;
-    height: 40%;
-    background-color: mistyrose;
-
-    margin-top: 2%;
+.Letters_Section {
+    width: 60%;
+    height: 25%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    text-align: center;
+    margin-top:5%;
 }
 
 .Typing_Section {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    width: 20%;
-    height: 80%;
-    background-color: mistyrose;
-    border-radius: 15px;
-    border: 3px solid;
-    margin-left: 13%;
+    align-items: center;
 }
 
-.Text_Typing{
-    display: flex;
-    font-size:20px;
-    margin-top:20%;
+.Text_Typing {
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
-.Text_Input{
-    width:50%;
-    height:17%;
-    margin-top:7%;
-    border-radius:10px;
-    text-align:center;
-}
-
-.Letters_Section {
-    display: grid;
-    width: 50%;
-    height: 80%;
-    grid-template-columns: repeat(7, 100px);
-    grid-template-rows: repeat(4, 100px);
-    background-color: mistyrose;
-    border: 3px solid;
-    margin-left: 4%;
-    align-items:center;
-    padding-left:2%;
-    padding-top:5px;
-    padding-bottom:4px;
-}
-
-.field {
-    width: 70%;
-    height: 90%;
-    background-color: mistyrose;
-    cursor: pointer;
-    text-align: center;
-    font-size: 23px;
-    border-radius: 50%;
-    padding-top: 10%;
+.Text_Input {
+    padding: 10px;
+    font-size: 16px;
+    width: 80%;
+    border: 1px solid #999;
+    border-radius: 5px;
 }
 
 .field2 {
-    width: 80%;
-    height: 70%;
-    cursor: pointer;
-    text-align: center;
+    width: 40px;
+    height: 40px; 
+    border: 2px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3vw;
+    font-size: 16px; 
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
 
-    border: 3px solid;
+
+.field {
+    width: 50px;
+    height: 50px;
+    background-color: snow;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px; 
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    overflow: hidden; 
+}
+
+.hidden-field {
+    visibility: hidden; 
+    opacity: 0; 
+    pointer-events: none; 
 }

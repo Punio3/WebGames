@@ -10,7 +10,6 @@ const server = http.createServer((req, res) => {
     let filePath = req.url === '/' ? '/index.html' : req.url;
     filePath = path.join(publicDir, filePath);
 
-    // Sprawdzenie, czy plik istnieje
     fs.access(filePath, fs.constants.F_OK, (err) => {
         if (err) {
             res.writeHead(404, { 'Content-Type': 'text/plain' });
@@ -18,7 +17,6 @@ const server = http.createServer((req, res) => {
             return;
         }
 
-        // Odczyt pliku i wys³anie odpowiedzi
         fs.readFile(filePath, (err, content) => {
             if (err) {
                 res.writeHead(500, { 'Content-Type': 'text/plain' });
