@@ -9,6 +9,23 @@ const Letters_Section = document.getElementById('Letters_Section');
 const Word_Section = document.getElementById('Word_Section'); 
 const Miss_Circles_Section = document.getElementById('Miss_Type_Section'); 
 
+document.addEventListener('DOMContentLoaded', () => {
+
+    const toggleButton = document.getElementById("toggle-button");
+    toggleButton.addEventListener('click', toggleSidebar);
+
+    const easyButton = document.getElementById("easy-button");
+    const mediumButton = document.getElementById("medium-button");
+    const hardButton = document.getElementById("hard-button");
+
+    easyButton.addEventListener('click', () => setDifficulty('£atwy'));
+    mediumButton.addEventListener('click', () => setDifficulty('Œredni'));
+    hardButton.addEventListener('click', () => setDifficulty('Trudny'));
+
+    const resetButton = document.getElementById("reset-button");
+    resetButton.addEventListener('click', resetGame);
+});
+
 let LettersInWordSection = [];
 let WordsDrawn = [];
 let LetterInLettersSection = [];
@@ -19,6 +36,7 @@ let _AmountOfWords;
 let _AmountOfCorrectLetters;
 let _AmountOfAllLeters;
 let isGameEnded;
+let currentDifficulty = '£atwy';
 
 
 
@@ -86,7 +104,6 @@ function Add_Miss_Type() {
 }
 
 function CreateWords() {
-    _AmountOfWords = 3;
 
     for (let i = 0; i < _AmountOfWords; i++) {
         const j = Math.floor(Math.random() * (Words.length));
@@ -110,7 +127,7 @@ function CreateWordSection(AmountOfWords, Words) {
 
     Word_Section.style.width = `${40 * ColumnSize}px`;
 
-    Word_Section.style.gridTemplateRows = `repeat(${2}, ${100 / 2}%)`;
+    Word_Section.style.gridTemplateRows = `repeat(${AmountOfWords / 2}, ${60 / (AmountOfWords / 2)}%)`;
     Word_Section.style.gridTemplateColumns = `repeat(${ColumnSize}, 1fr)`;
 
     for (let i = 0; i < AmountOfWords; i++) {
@@ -140,19 +157,41 @@ function CreateLettersSection() {
     }
 }
 
-function ResetGame() {
+function setDifficulty(level) {
+    currentDifficulty = level;
+
+    if (level === '£atwy') {
+        _AmountOfWords = 1; 
+    } else if (level === 'Œredni') {
+        _AmountOfWords = 2;
+    } else if (level === 'Trudny') {
+        _AmountOfWords = 3;
+    }
+
+    resetGame(); 
+    toggleSidebar();
+}
+
+function resetGame() {
     LettersInWordSection = [];
     LetterInLettersSection = [];
     WordsDrawn = [];
+    Miss_Circles_List = [];
     _AmountOfCorrectLetters = 0;
     _AmountOfAllLeters = 0;
     Miss_Types = 0;
     isGameEnded = false;
 
     CreateWords();
-    CreateLettersSection();
-    CreateWordSection(_AmountOfWords, WordsDrawn);
-    Create_Miss_Circles();
+    CreateLettersSection(); 
+    CreateWordSection(_AmountOfWords, WordsDrawn); 
+    Create_Miss_Circles(); 
 }
 
-ResetGame();
+function toggleSidebar() {
+    const sidebar = document.getElementById("difficultySidebar");
+    sidebar.classList.toggle("active");
+}
+
+setDifficulty(currentDifficulty);
+

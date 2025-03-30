@@ -8,32 +8,44 @@
 </head>
 
 <body>
+
     <div class="top_section">
         <button class="top_section_button" onclick="location.href='../index.html'" id="Back-button">Back</button>
         <button class="top_section_button" onclick="location.href='../MemoryGame/index.html'" id="MemoryGame-button">MemoryGame</button>
         <button class="top_section_button" onclick="location.href='../TicTacToe/index.html'" id="TicTacToe-button">TicTacToe</button>
         <button class="top_section_button" onclick="location.href='../Hangman/index.html'" id="Hangman-button">Hangman</button>
     </div>
+
     <div class="Main">
         <div class="Side_Section">
-            <div class="Miss_Type_Section" id="Miss_Type_Section" >
+            <div class="Miss_Type_Section" id="Miss_Type_Section"></div>
+            <!-- Przycisk toggle w Side_Section -->
+            <button class="toggle-button" id="toggle-button">☰ Wybierz poziom</button>
 
+            <!-- Pasek boczny z poziomami trudności -->
+            <div class="sidebar" id="difficultySidebar">
+                <div class="difficulty-options">
+
+                    <button id="easy-button">Łatwy</button>
+                    <button id="medium-button">Średni</button>
+                    <button id="hard-button">Trudny</button>
+                </div>
+                <div class="game-controls">
+                    <button id="reset-button">Resetuj grę</button>
+                </div>
             </div>
+
             <div class="Typing_Section">
                 <label class="Text_Typing">Podaj literę</label>
                 <input class="Text_Input" id="Text_Input" />
             </div>
         </div>
         <div class="Main_Section">
-            <div class="Word_Section" id="Word_Section">
-
-            </div>
-            <div class="Letters_Section" id="Letters_Section">
-
-            </div>
-
+            <div class="Word_Section" id="Word_Section"></div>
+            <div class="Letters_Section" id="Letters_Section"></div>
         </div>
     </div>
+
     <script type="module" src="script.js"></script>
 </body>
 </html>
