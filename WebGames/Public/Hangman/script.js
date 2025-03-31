@@ -1,30 +1,26 @@
 import Field from './Field.js';
 import Miss_Circles from './Miss_Circles.js';
 
-const Words = ["KARMA", "WARCABY", "SZYSZKA", "KOT", "MYSZKA"];
-
-
+const WordPools = {
+    "£atwy": [
+        "KAPELUSZ", "BALON", "SAMOCHÓD", "DOM", "PIES",
+        "KAWA", "DROGA", "HERBATA", "KOC", "TELEFON"
+    ],
+    "Œredni": [
+        "CZERWONY KAPELUSZ", "ZIELONY BALON", "SZYBKI SAMOCHÓD", "DU¯Y DOM", "MA£Y PIES",
+        "BIA£A KAWA", "D£UGA DROGA", "CIEP£A HERBATA", "MIÊKKI KOC", "NOWY TELEFON"
+    ],
+    "Trudny": [
+        "CZERWONY KAPELUSZ WE£NIANY", "ZIELONY BALON DU¯Y", "SZYBKI SAMOCHÓD SPORTOWY", "DU¯Y DOM DREWNIANY", "MA£Y PIES WESO£Y",
+        "BIA£A KAWA MOCNA", "D£UGA DROGA KAMIENISTA", "CIEP£A HERBATA AROMATYCZNA", "MIÊKKI KOC WE£NIANY", "NOWY TELEFON DOTYKOWY"
+    ]
+};
 const FieldType = document.getElementById('Text_Input');
 const Letters_Section = document.getElementById('Letters_Section');
-const Word_Section = document.getElementById('Word_Section'); 
-const Miss_Circles_Section = document.getElementById('Miss_Type_Section'); 
+const Word_Section = document.getElementById('Word_Section');
+const Miss_Circles_Section = document.getElementById('Miss_Type_Section');
 
-document.addEventListener('DOMContentLoaded', () => {
-
-    const toggleButton = document.getElementById("toggle-button");
-    toggleButton.addEventListener('click', toggleSidebar);
-
-    const easyButton = document.getElementById("easy-button");
-    const mediumButton = document.getElementById("medium-button");
-    const hardButton = document.getElementById("hard-button");
-
-    easyButton.addEventListener('click', () => setDifficulty('£atwy'));
-    mediumButton.addEventListener('click', () => setDifficulty('Œredni'));
-    hardButton.addEventListener('click', () => setDifficulty('Trudny'));
-
-    const resetButton = document.getElementById("reset-button");
-    resetButton.addEventListener('click', resetGame);
-});
+document.addEventListener('DOMContentLoaded', initializeGame);
 
 let LettersInWordSection = [];
 let WordsDrawn = [];
@@ -32,143 +28,126 @@ let LetterInLettersSection = [];
 let Miss_Circles_List = [];
 
 let Miss_Types;
-let _AmountOfWords;
 let _AmountOfCorrectLetters;
 let _AmountOfAllLeters;
 let isGameEnded;
 let currentDifficulty = '£atwy';
 
+function initializeGame() {
+    setupButtons();
+    setDifficulty(currentDifficulty);
+    FieldType.addEventListener('keydown', handleInput);
+}
 
+function setupButtons() {
+    document.getElementById("toggle-button").addEventListener('click', toggleSidebar);
+    document.getElementById("easy-button").addEventListener('click', () => setDifficulty('£atwy'));
+    document.getElementById("medium-button").addEventListener('click', () => setDifficulty('Œredni'));
+    document.getElementById("hard-button").addEventListener('click', () => setDifficulty('Trudny'));
+    document.getElementById("reset-button").addEventListener('click', resetGame);
+}
 
-FieldType.addEventListener('keydown', function (event) {
+function handleInput(event) {
     if (event.key === 'Enter' && !isGameEnded) {
-        event.preventDefault(); 
-        if(CheckIfLetterIsInLetterSection(FieldType.value)) CheckIfLetterIsInWordSection(FieldType.value);
-        FieldType.value = ''; 
-        if (_AmountOfCorrectLetters === _AmountOfAllLeters) isGameEnded = true;  
+        event.preventDefault();
+        if (CheckIfLetterIsInLetterSection(FieldType.value)) {
+            CheckIfLetterIsInWordSection(FieldType.value);
+        }
+        FieldType.value = '';
+        if (_AmountOfCorrectLetters === _AmountOfAllLeters) isGameEnded = true;
     }
-});
+}
 
 function CheckIfLetterIsInLetterSection(value) {
-    for (let i = 0; i < LetterInLettersSection.length; i++) {
-        if (LetterInLettersSection[i].letter === value) return false; 
-        if (LetterInLettersSection[i].letter === '') { 
-            LetterInLettersSection[i].SetLetter(value);
-            LetterInLettersSection[i].ShowLetter();
+    for (let field of LetterInLettersSection) {
+        if (field.letter === value) return false;
+        if (field.letter === '') {
+            field.SetLetter(value);
+            field.ShowLetter();
             return true;
         }
     }
 }
-function CheckIfLetterIsInWordSection(value) {
-    let FoundLetter = false;
 
-    for (let i = 0; i < LettersInWordSection.length; i++) {
-        if (LettersInWordSection[i].letter === value) {
-            LettersInWordSection[i].ShowLetter();
+function CheckIfLetterIsInWordSection(value) {
+    let foundLetter = false;
+    for (let field of LettersInWordSection) {
+        if (field.letter === value) {
+            field.ShowLetter();
             _AmountOfCorrectLetters++;
-            FoundLetter = true;
+            foundLetter = true;
         }
     }
-
-    if (!FoundLetter) {
-        Add_Miss_Type();
-    }
-}
-
-function Create_Miss_Circles() {
-    let _AmountOfCircles = 3;
-    let index = 0;
-
-    Miss_Circles_Section.innerHTML = '';
-
-    Miss_Circles_Section.style.gridTemplateRows = `repeat(${1}, ${100 / 1}%)`;
-    Miss_Circles_Section.style.gridTemplateColumns = `repeat(${_AmountOfCircles}, 1fr)`;
-
-    for (let i = 0; i < _AmountOfCircles; i++) {
-        const miss_circles = new Miss_Circles(index);
-
-        Miss_Circles_Section.appendChild(miss_circles.element);
-        Miss_Circles_List.push(miss_circles);
-
-        index++;
-    }
+    if (!foundLetter) Add_Miss_Type();
 }
 
 function Add_Miss_Type() {
     Miss_Circles_List[Miss_Types].ShowCircle();
     Miss_Types++;
-
-    if (Miss_Types === 3) {
-        isGameEnded = true;
-    }
+    if (Miss_Types === 3) isGameEnded = true;
 }
 
+function Create_Miss_Circles() {
+    const amountOfCircles = 3;
+    Miss_Circles_Section.innerHTML = '';
+    Miss_Circles_Section.style.gridTemplateColumns = `repeat(${amountOfCircles}, 1fr)`;
+
+    Miss_Circles_List = Array.from({ length: amountOfCircles }, (_, index) => {
+        const circle = new Miss_Circles(index);
+        Miss_Circles_Section.appendChild(circle.element);
+        return circle;
+    });
+}
+function AddSpaceToWords() {
+    for (let i = 0; i < WordsDrawn.length; i++) {
+        if (i % 2 === 0) WordsDrawn[i] += " ";
+    }
+}
 function CreateWords() {
-
-    for (let i = 0; i < _AmountOfWords; i++) {
-        const j = Math.floor(Math.random() * (Words.length));
-        if (i % 2 === 0) WordsDrawn.push(Words[j] + " ");
-        else WordsDrawn.push(Words[j]);
-        _AmountOfAllLeters += Words[j].length;
-    }
+    WordsDrawn = WordPools[currentDifficulty][Math.floor(Math.random() * WordPools[currentDifficulty].length)].split(' ');
+    _AmountOfAllLeters = WordsDrawn.reduce((sum, word) => sum + word.length, 0);
+    AddSpaceToWords();
 }
 
-function CountSize(AmountOfWords, Words) {
-    if (AmountOfWords === 1) return Words[0].length;
-    else if (AmountOfWords === 2) return Words[0].length + Words[1].length;
-    else if (AmountOfWords === 3) return Words[0].length + Words[1].length > Words[2].length ? Words[0].length + Words[1].length : Words[2].length;
+function CountSize() {
+    if (WordsDrawn.length === 1) return WordsDrawn[0].length;
+    else if (WordsDrawn.length === 2) return WordsDrawn[0].length + WordsDrawn[1].length;
+    else if (WordsDrawn.length === 3) return WordsDrawn[0].length + WordsDrawn[1].length > WordsDrawn[2].length ? WordsDrawn[0].length + WordsDrawn[1].length : WordsDrawn[2].length;
     return 0;
 }
-function CreateWordSection(AmountOfWords, Words) {
-    let index = 0;
-
+function CreateWordSection() {
     Word_Section.innerHTML = '';
-    let ColumnSize = CountSize(AmountOfWords, Words);
+    const rowCount = WordsDrawn.length;
+    const columnCount = CountSize();
 
-    Word_Section.style.width = `${40 * ColumnSize}px`;
+    Word_Section.style.display = 'grid';
+    Word_Section.style.gridTemplateRows = `repeat(${rowCount}, auto)`;
+    Word_Section.style.gridTemplateColumns = `repeat(${columnCount}, 1fr)`;
+    Word_Section.style.width = `${40 * columnCount}px`;
 
-    Word_Section.style.gridTemplateRows = `repeat(${AmountOfWords / 2}, ${60 / (AmountOfWords / 2)}%)`;
-    Word_Section.style.gridTemplateColumns = `repeat(${ColumnSize}, 1fr)`;
-
-    for (let i = 0; i < AmountOfWords; i++) {
-        for (let letter of WordsDrawn[i]) {
-            const field = new Field(index, letter, 1);
+    LettersInWordSection = WordsDrawn.flatMap((word, rowIndex) =>
+        [...word].map((letter, colIndex) => {
+            const field = new Field(rowIndex * word.length + colIndex, letter, 1);
             Word_Section.appendChild(field.element);
-            LettersInWordSection.push(field);
-            index++;
-        }
-    }
+            return field;
+        })
+    );
 }
 
 function CreateLettersSection() {
-    let index = 0;
-
     Letters_Section.innerHTML = '';
-
-    Letters_Section.style.gridTemplateRows = `repeat(${3}, ${100 / 3}%)`;
     Letters_Section.style.gridTemplateColumns = `repeat(8, auto)`;
 
-    for (let i = 0; i < 3 * 8; i++) {
+    LetterInLettersSection = Array.from({ length: 24 }, (_, index) => {
         const field = new Field(index, '', 0);
-
-        LetterInLettersSection.push(field);
         Letters_Section.appendChild(field.element);
-        index++;
-    }
+        return field;
+    });
 }
 
 function setDifficulty(level) {
     currentDifficulty = level;
-
-    if (level === '£atwy') {
-        _AmountOfWords = 1; 
-    } else if (level === 'Œredni') {
-        _AmountOfWords = 2;
-    } else if (level === 'Trudny') {
-        _AmountOfWords = 3;
-    }
-
-    resetGame(); 
+    resetGame();
     toggleSidebar();
 }
 
@@ -183,15 +162,13 @@ function resetGame() {
     isGameEnded = false;
 
     CreateWords();
-    CreateLettersSection(); 
-    CreateWordSection(_AmountOfWords, WordsDrawn); 
-    Create_Miss_Circles(); 
+    CreateLettersSection();
+    CreateWordSection();
+    Create_Miss_Circles();
 }
 
 function toggleSidebar() {
-    const sidebar = document.getElementById("difficultySidebar");
-    sidebar.classList.toggle("active");
+    document.getElementById("difficultySidebar").classList.toggle("active");
 }
 
 setDifficulty(currentDifficulty);
-

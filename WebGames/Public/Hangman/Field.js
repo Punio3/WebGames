@@ -32,9 +32,6 @@ class Field {
         this.element.classList.add('hidden-field');
     }
 
-    Show() {
-        this.element.classList.remove('hidden-field');
-    }
 }
 
 export default Field;

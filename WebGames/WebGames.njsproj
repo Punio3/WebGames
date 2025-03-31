@@ -28,6 +28,17 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Public\ArrowAdventure\images\grass.jpg" />
+    <Content Include="Public\ArrowAdventure\images\water2.jpg" />
+    <Content Include="Public\ArrowAdventure\index.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Public\ArrowAdventure\script.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Public\ArrowAdventure\style.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Public\Hangman\Field.js">
       <SubType>Code</SubType>
     </Content>
@@ -79,8 +90,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Public\" />
+    <Folder Include="Public\ArrowAdventure\images\" />
     <Folder Include="Public\MemoryGame\" />
     <Folder Include="Public\Hangman\" />
+    <Folder Include="Public\ArrowAdventure\" />
     <Folder Include="Public\TicTacToe\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
