@@ -15,7 +15,13 @@ class Map {
         this.Images["grass"].src = 'images/grass.jpg';
 
         this.Images["water"] = new Image();
-        this.Images["water"].src = 'images/water2.jpg';
+        this.Images["water"].src = 'images/water.jpg';
+
+        this.Images["desert"] = new Image();
+        this.Images["desert"].src = 'images/sand.jpg';
+
+        this.Images["snow"] = new Image();
+        this.Images["snow"].src = 'images/snow.jpg';
     }
 
     initialize() {
@@ -44,6 +50,29 @@ class Map {
             let posY = Math.floor(Math.random() * this.Size);
             for (let j = 0; j < 3; j++) {
                 this.createWaterHelper(posX + j, posY, 4);
+            }
+        }
+    }
+
+    CreateBiomHelper(Type, CanStand, imageSource, x, y, depth) {
+        let chance = Math.floor(Math.random() * 5);
+        if (chance !== 0) {
+            if (depth > 0 && this.checkPosition(x, y)) {
+                this.Tiles[x][y] = new Tile(Type, CanStand, x, y, 40, imageSource);
+                this.CreateBiomHelper(Type, CanStand, imageSource, x + 1, y, depth - 1);
+                this.CreateBiomHelper(Type, CanStand, imageSource, x - 1, y, depth - 1);
+                this.CreateBiomHelper(Type, CanStand, imageSource, x, y + 1, depth - 1);
+                this.CreateBiomHelper(Type, CanStand, imageSource, x, y - 1, depth - 1);
+            }
+        }
+    }
+
+    CreateBiom(Type, CanStand, imageSource) {
+        for (let i = 0; i < 2; i++) {
+            let posX = Math.floor(Math.random() * this.Size);
+            let posY = Math.floor(Math.random() * this.Size);
+            for (let j = 0; j < 3; j++) {
+                this.CreateBiomHelper(Type, CanStand, imageSource, posX + j, posY, 12);
             }
         }
     }

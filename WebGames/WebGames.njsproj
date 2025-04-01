@@ -31,7 +31,7 @@
     <Content Include="Public\ArrowAdventure\images\grass.jpg" />
     <Content Include="Public\ArrowAdventure\images\sand.jpg" />
     <Content Include="Public\ArrowAdventure\images\snow.jpg" />
-    <Content Include="Public\ArrowAdventure\images\water2.jpg" />
+    <Content Include="Public\ArrowAdventure\images\water.jpg" />
     <Content Include="Public\ArrowAdventure\index.html">
       <SubType>Code</SubType>
     </Content>

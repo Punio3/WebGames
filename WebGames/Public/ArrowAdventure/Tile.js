@@ -1,5 +1,4 @@
 
-
 class Tile {
     constructor(type, canStand,posX,posY,size,image) {
         this.Type = type;
