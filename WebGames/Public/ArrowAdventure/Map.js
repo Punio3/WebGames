@@ -1,12 +1,15 @@
 import Tile from './Tile.js';
-
+import Rabbit from './Animals/Rabbit.js';
 class Map {
     constructor(size) {
         this.Tiles = [];
+        this.animals = [];
         this.Size = size;
         this.Images = {};
         this.loadImages(); 
         this.initialize();
+
+        this.CrateAnimals();
     }
 
 
@@ -22,7 +25,17 @@ class Map {
 
         this.Images["snow"] = new Image();
         this.Images["snow"].src = 'images/snow.jpg';
+
+        this.Images["rabbit"] = new Image();
+        this.Images["rabbit"].src = 'images/rabbit.png';
     }
+
+    CrateAnimals() {
+        this.addAnimal(new Rabbit(0, 0));
+        this.addAnimal(new Rabbit(5, 5));
+        this.addAnimal(new Rabbit(10, 10));
+    }
+
 
     initialize() {
         for (let i = 0; i < this.Size; i++) {
@@ -96,7 +109,7 @@ class Map {
 
                 if (mapX < this.Size && mapY < this.Size) {
                     const tile = this.Tiles[mapX][mapY];
-                    const img = this.Images[tile.Image]; 
+                    const img = this.Images[tile.Image];
 
                     if (img.complete) {
                         ctx.drawImage(img, x * tile.Size, y * tile.Size, tile.Size, tile.Size);
@@ -105,8 +118,39 @@ class Map {
             }
         }
 
+        this.animals.forEach(animal => {
+            if (this.isWithinCamera(animal, camera, cameraSize)) {
+                this.drawAnimal(animal,camera,ctx);
+            }
+        });
+
         ctx.fillStyle = "red";
         ctx.fillRect((player.x - camera.x) * 40, (player.y - camera.y) * 40, 40, 40);
+    }
+
+    drawAnimal(animal,camera,ctx) {
+        const img = this.Images[animal.Image];
+        if (img.complete) {
+            ctx.drawImage(img, (animal.x - camera.x) * 40, (animal.y - camera.y) * 40, 40, 40);
+        }
+    }
+
+    addAnimal(animal) {
+        this.animals.push(animal);
+    }
+
+    update(ctx,camera,player, cameraSize) {
+        this.animals.forEach(animal => {
+            animal.move(this.Size);
+        });
+        this.draw(ctx, camera, cameraSize, player);
+    }
+
+    isWithinCamera(animal, camera, cameraSize) {
+        return (
+            animal.x >= camera.x && animal.x < camera.x + cameraSize &&
+            animal.y >= camera.y && animal.y < camera.y + cameraSize
+        );
     }
 }
 

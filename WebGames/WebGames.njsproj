@@ -28,7 +28,14 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Public\ArrowAdventure\Animals\Animal.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Public\ArrowAdventure\Animals\Rabbit.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Public\ArrowAdventure\images\grass.jpg" />
+    <Content Include="Public\ArrowAdventure\images\rabbit.png" />
     <Content Include="Public\ArrowAdventure\images\sand.jpg" />
     <Content Include="Public\ArrowAdventure\images\snow.jpg" />
     <Content Include="Public\ArrowAdventure\images\water.jpg" />
@@ -99,6 +106,7 @@
   <ItemGroup>
     <Folder Include="Public\" />
     <Folder Include="Public\ArrowAdventure\images\" />
+    <Folder Include="Public\ArrowAdventure\Animals\" />
     <Folder Include="Public\MemoryGame\" />
     <Folder Include="Public\Hangman\" />
     <Folder Include="Public\ArrowAdventure\" />
