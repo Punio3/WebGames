@@ -3,8 +3,14 @@ import Animal from './Animal.js';
 class Rabbit extends Animal {
 
     constructor(x, y) {
-        super(x, y, "rabbit"); 
+        super(x, y,"rabbit"); 
 
+        this.loadImages();
+    }
+
+    loadImages() {
+        this.Images["rabbit"] = new Image();
+        this.Images["rabbit"].src = '../ArrowAdventure/images/rabbit.png';
     }
 
     move(mapSize) {

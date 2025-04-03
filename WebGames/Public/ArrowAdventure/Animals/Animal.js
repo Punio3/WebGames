@@ -5,6 +5,7 @@ class Animal {
         }
         this.x = x;
         this.y = y;
+        this.Images = {};
         this.Image = image;
     }
 
@@ -18,6 +19,13 @@ class Animal {
             console.log(`Zwierzê poruszy³o siê do (${this.x}, ${this.y})`);
         } else {
             console.log("Ruch poza mapê jest niemo¿liwy!");
+        }
+    }
+
+    drawAnimal(camera, ctx) {
+        const img = this.Images[this.Image];
+        if (img.complete) {
+            ctx.drawImage(img, (this.x - camera.x) * 40, (this.y - camera.y) * 40, 40, 40);
         }
     }
 }

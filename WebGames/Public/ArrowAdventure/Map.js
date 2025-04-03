@@ -1,10 +1,13 @@
 import Tile from './Tile.js';
 import Rabbit from './Animals/Rabbit.js';
+import Player from './Player.js';
+
 class Map {
     constructor(size) {
         this.Tiles = [];
         this.animals = [];
         this.Size = size;
+        this.Player = new Player(25, 25);
         this.Images = {};
         this.loadImages(); 
         this.initialize();
@@ -25,15 +28,12 @@ class Map {
 
         this.Images["snow"] = new Image();
         this.Images["snow"].src = 'images/snow.jpg';
-
-        this.Images["rabbit"] = new Image();
-        this.Images["rabbit"].src = 'images/rabbit.png';
     }
 
     CrateAnimals() {
-        this.addAnimal(new Rabbit(0, 0));
-        this.addAnimal(new Rabbit(5, 5));
-        this.addAnimal(new Rabbit(10, 10));
+        this.animals.push(new Rabbit(0, 0));
+        this.animals.push(new Rabbit(5, 5));
+        this.animals.push(new Rabbit(10, 10));
     }
 
 
@@ -94,12 +94,21 @@ class Map {
         return x >= 0 && x < this.Size && y >= 0 && y < this.Size;
     }
 
-    checkCanStand(x,y) {
-        if (this.Tiles[x][y].CanStand) return true;
+    checkCanStand(x, y) {
+        if (this.checkPosition(x, y)) {
+            if (this.Tiles[x][y].CanStand) return true;
+        }
         return false;
     }
 
-    draw(ctx, camera, cameraSize, player) {
+    CheckPlayerCanMove(direction) {
+        if (direction === 0) return this.checkPosition(this.Player.x, this.Player.y) && this.checkCanStand(this.Player.x, this.Player.y - 1);
+        if (direction === 1) return this.checkPosition(this.Player.x, this.Player.y) && this.checkCanStand(this.Player.x, this.Player.y + 1);
+        if (direction === 2) return this.checkPosition(this.Player.x, this.Player.y) && this.checkCanStand(this.Player.x + 1, this.Player.y);
+        if (direction === 3) return this.checkPosition(this.Player.x, this.Player.y) && this.checkCanStand(this.Player.x - 1, this.Player.y);
+    }
+
+    draw(ctx, camera, cameraSize) {
         ctx.clearRect(0, 0, 400, 400);
 
         for (let y = 0; y < cameraSize; y++) {
@@ -120,30 +129,18 @@ class Map {
 
         this.animals.forEach(animal => {
             if (this.isWithinCamera(animal, camera, cameraSize)) {
-                this.drawAnimal(animal,camera,ctx);
+                animal.drawAnimal(camera,ctx);
             }
         });
 
-        ctx.fillStyle = "red";
-        ctx.fillRect((player.x - camera.x) * 40, (player.y - camera.y) * 40, 40, 40);
+        this.Player.DrawPlayer(camera,ctx);
     }
 
-    drawAnimal(animal,camera,ctx) {
-        const img = this.Images[animal.Image];
-        if (img.complete) {
-            ctx.drawImage(img, (animal.x - camera.x) * 40, (animal.y - camera.y) * 40, 40, 40);
-        }
-    }
-
-    addAnimal(animal) {
-        this.animals.push(animal);
-    }
-
-    update(ctx,camera,player, cameraSize) {
+    update(ctx,camera, cameraSize) {
         this.animals.forEach(animal => {
             animal.move(this.Size);
         });
-        this.draw(ctx, camera, cameraSize, player);
+        this.draw(ctx, camera, cameraSize);
     }
 
     isWithinCamera(animal, camera, cameraSize) {

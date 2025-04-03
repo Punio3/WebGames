@@ -35,6 +35,22 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Public\ArrowAdventure\images\grass.jpg" />
+    <Content Include="Public\ArrowAdventure\images\Hero\HeroIdle\hero-idle-back.png" />
+    <Content Include="Public\ArrowAdventure\images\Hero\HeroIdle\hero-idle-front.png" />
+    <Content Include="Public\ArrowAdventure\images\Hero\HeroIdle\hero-idle-side.png" />
+    <Content Include="Public\ArrowAdventure\images\Hero\HeroIdle\hero-idle-side2.png" />
+    <Content Include="Public\ArrowAdventure\images\Hero\HeroWalkBack\hero-walk-back-1.png" />
+    <Content Include="Public\ArrowAdventure\images\Hero\HeroWalkBack\hero-walk-back-2.png" />
+    <Content Include="Public\ArrowAdventure\images\Hero\HeroWalkBack\hero-walk-back-3.png" />
+    <Content Include="Public\ArrowAdventure\images\Hero\HeroWalkBack\hero-walk-back-4.png" />
+    <Content Include="Public\ArrowAdventure\images\Hero\HeroWalkBack\hero-walk-back-5.png" />
+    <Content Include="Public\ArrowAdventure\images\Hero\HeroWalkBack\hero-walk-back-6.png" />
+    <Content Include="Public\ArrowAdventure\images\Hero\HeroWalkFront\hero-walk-front-1.png" />
+    <Content Include="Public\ArrowAdventure\images\Hero\HeroWalkFront\hero-walk-front-2.png" />
+    <Content Include="Public\ArrowAdventure\images\Hero\HeroWalkFront\hero-walk-front-3.png" />
+    <Content Include="Public\ArrowAdventure\images\Hero\HeroWalkFront\hero-walk-front-4.png" />
+    <Content Include="Public\ArrowAdventure\images\Hero\HeroWalkFront\hero-walk-front-5.png" />
+    <Content Include="Public\ArrowAdventure\images\Hero\HeroWalkFront\hero-walk-front-6.png" />
     <Content Include="Public\ArrowAdventure\images\rabbit.png" />
     <Content Include="Public\ArrowAdventure\images\sand.jpg" />
     <Content Include="Public\ArrowAdventure\images\snow.jpg" />
@@ -43,6 +59,9 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Public\ArrowAdventure\Map.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Public\ArrowAdventure\Player.js">
       <SubType>Code</SubType>
     </Content>
     <Content Include="Public\ArrowAdventure\script.js">
@@ -107,6 +126,10 @@
     <Folder Include="Public\" />
     <Folder Include="Public\ArrowAdventure\images\" />
     <Folder Include="Public\ArrowAdventure\Animals\" />
+    <Folder Include="Public\ArrowAdventure\images\Hero\" />
+    <Folder Include="Public\ArrowAdventure\images\Hero\HeroIdle\" />
+    <Folder Include="Public\ArrowAdventure\images\Hero\HeroWalkBack\" />
+    <Folder Include="Public\ArrowAdventure\images\Hero\HeroWalkFront\" />
     <Folder Include="Public\MemoryGame\" />
     <Folder Include="Public\Hangman\" />
     <Folder Include="Public\ArrowAdventure\" />
