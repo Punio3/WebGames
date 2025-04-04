@@ -31,7 +31,15 @@ class Map {
             body_skret_3: 'Assets/Body_Skret_Right_Up.png',
             body_skret_4: 'Assets/Body_Skret_Up_Left.png',
             Body_Col: 'Assets/Body_Col.png',
-            Body_Row: 'Assets/Body_Row.png'
+            Body_Row: 'Assets/Body_Row.png',
+            Tail_skret_1: 'Assets/Tail_Skret_Down_Left.png',
+            Tail_skret_2: 'Assets/Tail_Skret_Down_Right.png',
+            Tail_skret_3: 'Assets/Tail_Skret_Left_Down.png',
+            Tail_skret_4: 'Assets/Tail_Skret_Left_Up.png',
+            Tail_skret_5: 'Assets/Tail_Skret_Right_Down.png',
+            Tail_skret_6: 'Assets/Tail_Skret_Right_Up.png',
+            Tail_skret_7: 'Assets/Tail_Skret_Up_Left.png',
+            Tail_skret_8: 'Assets/Tail_Skret_Up_Right.png'
         };
 
         const promises = Object.entries(imageList).map(([key, src]) => {

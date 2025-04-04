@@ -6,6 +6,8 @@ class Snake {
         this.direction = 0;
 
         this.SnakeParts.push(new SnakePart(Math.floor(size / 2), Math.floor(size / 2), 0, "head_UP"));
+        this.SnakeParts.push(new SnakePart(Math.floor(size / 2), Math.floor(size / 2) + 1, 0, "Body_Col"));
+        this.SnakeParts.push(new SnakePart(Math.floor(size / 2), Math.floor(size / 2) + 2, 0, "Tail_Up"));
     }
 
     CheckHeadPosition(Size) {
@@ -44,7 +46,7 @@ class Snake {
             this.SnakeParts[i].ChangeImage(1,this.SnakeParts[i-1].direction);
         }
         if (this.SnakeParts.length > 1) {
-            this.SnakeParts[this.SnakeParts.length - 1].ChangeImage(2, -1);
+            this.SnakeParts[this.SnakeParts.length - 1].ChangeImage(2, this.SnakeParts[this.SnakeParts.length-2].direction);
         }
     }
 

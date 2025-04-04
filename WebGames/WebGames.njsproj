@@ -116,6 +116,14 @@
     <Content Include="Public\Snake\Assets\Tail_Down.png" />
     <Content Include="Public\Snake\Assets\Tail_Left.png" />
     <Content Include="Public\Snake\Assets\Tail_Right.png" />
+    <Content Include="Public\Snake\Assets\Tail_Skret_Down_Left.png" />
+    <Content Include="Public\Snake\Assets\Tail_Skret_Down_Right.png" />
+    <Content Include="Public\Snake\Assets\Tail_Skret_Left_Down.png" />
+    <Content Include="Public\Snake\Assets\Tail_Skret_Left_Up.png" />
+    <Content Include="Public\Snake\Assets\Tail_Skret_Right_Down.png" />
+    <Content Include="Public\Snake\Assets\Tail_Skret_Right_Up.png" />
+    <Content Include="Public\Snake\Assets\Tail_Skret_Up_Left.png" />
+    <Content Include="Public\Snake\Assets\Tail_Skret_Up_Right.png" />
     <Content Include="Public\Snake\Assets\Tail_Up.png" />
     <Content Include="Public\Snake\Fruit.js">
       <SubType>Code</SubType>
