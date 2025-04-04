@@ -103,6 +103,20 @@
     <Content Include="Public\MemoryGame\style.css">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Public\Snake\Assets\Body_Col.png" />
+    <Content Include="Public\Snake\Assets\Body_Row.png" />
+    <Content Include="Public\Snake\Assets\Body_Skret_Down_Right.png" />
+    <Content Include="Public\Snake\Assets\Body_Skret_Left_Down.png" />
+    <Content Include="Public\Snake\Assets\Body_Skret_Right_Up.png" />
+    <Content Include="Public\Snake\Assets\Body_Skret_Up_Left.png" />
+    <Content Include="Public\Snake\Assets\Head_Down.png" />
+    <Content Include="Public\Snake\Assets\Head_Left.png" />
+    <Content Include="Public\Snake\Assets\Head_Right.png" />
+    <Content Include="Public\Snake\Assets\Head_Up.png" />
+    <Content Include="Public\Snake\Assets\Tail_Down.png" />
+    <Content Include="Public\Snake\Assets\Tail_Left.png" />
+    <Content Include="Public\Snake\Assets\Tail_Right.png" />
+    <Content Include="Public\Snake\Assets\Tail_Up.png" />
     <Content Include="Public\Snake\Fruit.js">
       <SubType>Code</SubType>
     </Content>
@@ -155,6 +169,7 @@
     <Folder Include="Public\Hangman\" />
     <Folder Include="Public\ArrowAdventure\" />
     <Folder Include="Public\Snake\" />
+    <Folder Include="Public\Snake\Assets\" />
     <Folder Include="Public\TicTacToe\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />

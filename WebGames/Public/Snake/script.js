@@ -3,12 +3,13 @@ import Map from './Map.js';
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-canvas.width = 500;
-canvas.height = 500;
+canvas.width = 450;
+canvas.height = 450;
 
 const mapSize = 10;
 
 const _Map = new Map(mapSize);
+await _Map.init();
 
 _Map.DrawGame(ctx);
 

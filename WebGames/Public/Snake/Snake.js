@@ -5,7 +5,7 @@ class Snake {
         this.SnakeParts = []
         this.direction = 0;
 
-        this.SnakeParts.push(new SnakePart(Math.floor(size/2), Math.floor(size/2), 0, "head"));
+        this.SnakeParts.push(new SnakePart(Math.floor(size / 2), Math.floor(size / 2), 0, "head_UP"));
     }
 
     CheckHeadPosition(Size) {
@@ -36,6 +36,16 @@ class Snake {
         if (this.SnakeParts[0].direction === 1) this.SnakeParts[0].y++;
         if (this.SnakeParts[0].direction === 2) this.SnakeParts[0].x--;
         if (this.SnakeParts[0].direction === 3) this.SnakeParts[0].x++;
+    }
+
+    ChangeAllImages() {
+        this.SnakeParts[0].ChangeImage(0, -1);
+        for (let i = 1; i < this.SnakeParts.length - 1; i++) {
+            this.SnakeParts[i].ChangeImage(1,this.SnakeParts[i-1].direction);
+        }
+        if (this.SnakeParts.length > 1) {
+            this.SnakeParts[this.SnakeParts.length - 1].ChangeImage(2, -1);
+        }
     }
 
     CheckIfEatFruit(fruit) {
