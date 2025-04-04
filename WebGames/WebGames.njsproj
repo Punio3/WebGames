@@ -103,6 +103,27 @@
     <Content Include="Public\MemoryGame\style.css">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Public\Snake\Fruit.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Public\Snake\index.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Public\Snake\Map.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Public\Snake\script.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Public\Snake\Snake.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Public\Snake\SnakePart.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Public\Snake\style.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Public\style.css">
       <SubType>Code</SubType>
     </Content>
@@ -133,6 +154,7 @@
     <Folder Include="Public\MemoryGame\" />
     <Folder Include="Public\Hangman\" />
     <Folder Include="Public\ArrowAdventure\" />
+    <Folder Include="Public\Snake\" />
     <Folder Include="Public\TicTacToe\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />

@@ -8,28 +8,18 @@
 </head>
 
 <body>
+
     <div class="top_section">
         <button class="top_section_button" onclick="location.href='../index.html'" id="Back-button">Back</button>
         <button class="top_section_button" onclick="location.href='../MemoryGame/index.html'" id="MemoryGame-button">MemoryGame</button>
         <button class="top_section_button" onclick="location.href='../TicTacToe/index.html'" id="TicTacToe-button">TicTacToe</button>
         <button class="top_section_button" onclick="location.href='../Hangman/index.html'" id="Hangman-button">Hangman</button>
-        <button class="top_section_button" onclick="location.href='../ArrowAdventure/index.html'" id="Hangman-button">ArrowAdventure</button>
+        <button class="top_section_button" onclick="location.href='../ArrowAdventure/index.html'" id="Adventure-button">ArrowAdventure</button>
         <button class="top_section_button" onclick="location.href='../Snake/index.html'" id="Snake-button">Snake</button>
     </div>
 
-    <div class="game-container">
-        <div class="sidebar">
-            <h2 class="sidebar_h2">Board Size</h2>
-            <input type="number" id="rows" min="3" max="6" value="3">
+    <canvas id="gameCanvas"></canvas>
 
-            <button id="set-size-button">Set Size</button>
-
-            <button id="restart-button">Start Again</button>
-        </div>
-
-        <div id="game-board" class="game-board"></div>
-
-    </div>
 
     <script type="module" src="script.js"></script>
 </body>
