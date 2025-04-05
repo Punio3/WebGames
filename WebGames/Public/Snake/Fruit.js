@@ -1,13 +1,14 @@
 
 class Fruit {
-    constructor() {
+    constructor(image) {
         this.x = 0;
         this.y = 0;
+        this.Image = image;
     }
 
-    GenerateRandomCords(size) {
-        this.x = Math.floor(Math.random() * size);
-        this.y = Math.floor(Math.random() * size);
+    SetCords(x,y) {
+        this.x = x;
+        this.y = y;
     }
 }
 

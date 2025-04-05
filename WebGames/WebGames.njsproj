@@ -109,6 +109,7 @@
     <Content Include="Public\Snake\Assets\Body_Skret_Left_Down.png" />
     <Content Include="Public\Snake\Assets\Body_Skret_Right_Up.png" />
     <Content Include="Public\Snake\Assets\Body_Skret_Up_Left.png" />
+    <Content Include="Public\Snake\Assets\fruit.png" />
     <Content Include="Public\Snake\Assets\Head_Down.png" />
     <Content Include="Public\Snake\Assets\Head_Left.png" />
     <Content Include="Public\Snake\Assets\Head_Right.png" />

@@ -40,6 +40,70 @@ body {
     }
 
 canvas {
-    margin-top: 5%;
-    border: 2px solid white;
+    border-radius:10px;
+    border: 2px solid black;
+}
+
+.GameDiv {
+    display: flex;
+    flex-direction: row;
+    width: 85%;
+    height: 85%;
+    background-color: #f9f9f9;
+    align-items: center;
+    border-radius: 15px;
+    border: 3px solid #ddd;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 2%;
+}
+
+.sidebar {
+    display: flex;
+    width: 25%;
+    height: 80%;
+    margin-right: 15%;
+    margin-left: 5%;
+    align-items:center;
+}
+
+.sidebar_GameInfromations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    border: 3px solid #ccc;
+    text-align: center;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    padding-top:10%;
+}
+
+.sidebar button {
+    padding: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 3px solid #007bff;
+    transition: background-color 0.3s ease;
+    margin-top:10%;
+}
+
+
+.sidebar button:hover {
+    background-color: aquamarine;
+}
+
+.sidebar_text, .sidebar_timer, .sidebar_CorrectPars, .sidebar_TriesAmount {
+    font-size: 26px;
+    color: #333;
+}
+.sidebar_2{
+    margin-bottom:3%;
 }

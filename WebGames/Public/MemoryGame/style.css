@@ -88,7 +88,7 @@ body {
     margin-bottom: 20px;
 }
 
-.sidebar_text, .sidebar_timer, .sidebar_CorrectPars .sidebar_TriesAmount {
+.sidebar_text, .sidebar_timer, .sidebar_CorrectPars, .sidebar_TriesAmount {
     font-size: 18px;
     color: #333;
 }

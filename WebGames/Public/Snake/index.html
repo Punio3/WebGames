@@ -17,10 +17,23 @@
         <button class="top_section_button" onclick="location.href='../ArrowAdventure/index.html'" id="Adventure-button">ArrowAdventure</button>
         <button class="top_section_button" onclick="location.href='../Snake/index.html'" id="Snake-button">Snake</button>
     </div>
+    <div class="GameDiv">
+        <div class="sidebar">
+            <div class="sidebar_GameInfromations">
+                <div class="sidebar_2">
+                    <label class="sidebar_text">Timer    </label>
+                    <label class="sidebar_timer" id="Timer">0:00</label>
+                </div>
+                <div class="sidebar_2">
+                    <label class="sidebar_text">Points    </label>
+                    <label class="sidebar_TriesAmount" id="Points">0</label>
+                </div>
+                <button id="restart-button">Start Again</button>
+            </div>
+        </div>
+        <canvas id="gameCanvas"></canvas>
 
-    <canvas id="gameCanvas"></canvas>
-
-
+    </div>
     <script type="module" src="script.js"></script>
 </body>
 </html>

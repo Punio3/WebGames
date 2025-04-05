@@ -4,12 +4,20 @@ import Fruit from './Fruit.js';
 class Map {
     constructor(size) {
         this.Size = size;
-        this.TileSize = 450 / size;
+        this.TileSize = 550 / size;
         this.Snake = new Snake(size);
         this.isGameEnded = false;
-        this.Fruit = new Fruit();
+        this.Fruit = new Fruit("fruit");
         this.Images = {};
-        this.Fruit.GenerateRandomCords(size);
+        this.Fruit.SetCords(size - 3, size - 3);
+        this.Points = 0;
+    }
+
+    ResetMap() {
+        this.Snake = new Snake(this.Size);
+        this.Points = 0;
+        this.GenerateFruitCords();
+        this.isGameEnded = false;
     }
 
     async init() {
@@ -39,7 +47,8 @@ class Map {
             Tail_skret_5: 'Assets/Tail_Skret_Right_Down.png',
             Tail_skret_6: 'Assets/Tail_Skret_Right_Up.png',
             Tail_skret_7: 'Assets/Tail_Skret_Up_Left.png',
-            Tail_skret_8: 'Assets/Tail_Skret_Up_Right.png'
+            Tail_skret_8: 'Assets/Tail_Skret_Up_Right.png',
+            fruit: 'Assets/fruit.png'
         };
 
         const promises = Object.entries(imageList).map(([key, src]) => {
@@ -60,18 +69,13 @@ class Map {
 
     Draw(ctx) {
         ctx.clearRect(0, 0, 450, 450);
-        ctx.fillStyle = 'black';
+
 
         for (let y = 0; y < this.Size; y++) {
             for (let x = 0; x < this.Size; x++) {
+                if ((x + y) % 2 === 0) ctx.fillStyle = '#708090';  // slate gray
+                else ctx.fillStyle = '#ADD8E6';                   // light blue
                 ctx.fillRect(x * this.TileSize, y * this.TileSize, this.TileSize, this.TileSize);
-            }
-        }
-
-        ctx.fillStyle = 'green';
-        for (let y = 0; y < this.Size; y++) {
-            for (let x = 0; x < this.Size; x++) {
-                ctx.fillRect(x * this.TileSize, y * this.TileSize, this.TileSize - 1, this.TileSize - 1);
             }
         }
 
@@ -83,14 +87,22 @@ class Map {
                     image,
                     part.x * this.TileSize,
                     part.y * this.TileSize,
-                    45,
-                    45
+                    this.TileSize,
+                    this.TileSize
                 );
             }
         }
 
-        ctx.fillStyle = 'purple';
-        ctx.fillRect(this.Fruit.x * this.TileSize, this.Fruit.y * this.TileSize, this.TileSize - 1, this.TileSize - 1);
+        const Fruitimage = this.Images[this.Fruit.Image];
+        if (Fruitimage) {
+            ctx.drawImage(
+                Fruitimage,
+                this.Fruit.x * this.TileSize,
+                this.Fruit.y * this.TileSize,
+                this.TileSize,
+                this.TileSize
+            );
+        }
     }
 
     async DrawGame(ctx) {
@@ -100,10 +112,12 @@ class Map {
 
             if (this.Snake.CheckHeadPosition(this.Size)) {
                 if (this.Snake.CheckIfEatFruit(this.Fruit)) {
-                    this.Fruit.GenerateRandomCords(this.Size);
+                    this.GenerateFruitCords();
+                    this.Points += 50;
+                    document.getElementById('Points').textContent = `${String(this.Points)}`;
                 }
                 this.Draw(ctx);
-                await this.sleep(300);
+                await this.sleep(200);
             } else {
                 this.isGameEnded = true;
                 console.log("GameEnded");
@@ -113,6 +127,21 @@ class Map {
 
     sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    GenerateFruitCords() {
+        let TempX, TempY;
+        let isOnSnake;
+
+        do {
+            TempX = Math.floor(Math.random() * this.Size);
+            TempY = Math.floor(Math.random() * this.Size);
+
+            isOnSnake = this.Snake.SnakeParts.some(part => part.x === TempX && part.y === TempY);
+
+        } while (isOnSnake);
+
+        this.Fruit.SetCords(TempX, TempY);
     }
 }
 
