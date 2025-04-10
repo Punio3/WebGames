@@ -58,6 +58,15 @@ class Snake {
         }
         return false;
     }
+
+    SetMove(Size) {
+        if (this.SnakeParts[0].y === 0 && this.direction === 0) this.direction = 3;
+        else if (this.SnakeParts[0].y === 0 && this.direction === 3) this.direction = 1;
+        else if (this.SnakeParts[0].y === Size - 2 && this.direction === 1 && this.SnakeParts[0].x !== Size - 1) this.direction = 3;
+        else if (this.SnakeParts[0].y === Size - 2 && this.direction === 3) this.direction = 0;
+        else if (this.SnakeParts[0].y === Size - 1 && this.direction === 1) this.direction = 2;
+        else if (this.SnakeParts[0].y === Size - 1 && this.SnakeParts[0].x === 0) this.direction = 0;
+    }
 }
 
 export default Snake;

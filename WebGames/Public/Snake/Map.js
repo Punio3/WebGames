@@ -11,6 +11,7 @@ class Map {
         this.Images = {};
         this.Fruit.SetCords(size - 3, size - 3);
         this.Points = 0;
+        this.StopGame = false;
     }
 
     ResetMap() {
@@ -18,6 +19,7 @@ class Map {
         this.Points = 0;
         this.GenerateFruitCords();
         this.isGameEnded = false;
+        this.StopGame = false;
     }
 
     async init() {
@@ -105,8 +107,11 @@ class Map {
         }
     }
 
-    async DrawGame(ctx) {
-        while (!this.isGameEnded) {
+    async DrawGame(ctx, blockKeyBoard) {
+        while (!this.isGameEnded && !this.StopGame) {
+            if (blockKeyBoard) {
+                this.Snake.SetMove(this.Size);
+            }
             this.Snake.Move();
             this.Snake.ChangeAllImages();
 
@@ -117,7 +122,7 @@ class Map {
                     document.getElementById('Points').textContent = `${String(this.Points)}`;
                 }
                 this.Draw(ctx);
-                await this.sleep(200);
+                await this.sleep(140);
             } else {
                 this.isGameEnded = true;
                 console.log("GameEnded");
